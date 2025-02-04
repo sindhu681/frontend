@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -229,4 +230,237 @@
     </script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperspec AI</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: white;
+            position: relative;
+        }
+
+        /* Background Image with Blur */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('AI.jpg') no-repeat center center/cover;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        /* Overlay for better readability */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Navigation Menu */
+        nav {
+            background-color: rgba(52, 73, 94, 0.9);
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        nav a:hover {
+            background-color: #1abc9c;
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        .container {
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Dashboard Icons */
+        .dashboard-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .icon {
+            text-align: center;
+            padding: 20px;
+            background-color: #1abc9c;
+            color: white;
+            border-radius: 8px;
+            width: 100px;
+            cursor: pointer;
+        }
+        .icon:hover {
+            background-color: #16a085;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+        }
+    </style>
+
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Background Image and Overlay -->
+    <div class="background"></div>
+    <div class="overlay"></div>
+
+    <!-- Header Section -->
+    <header>
+        <img src="logo.jpg" alt="Hyperspec AI Logo" style="width: 120px; height: auto;">
+        <h1>Welcome to Hyperspec AI</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#" onclick="showHomePage()">Home</a>
+        <a href="#" onclick="showDashboard()">Dashboard</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div id="homePage">
+            <h2>Home Page</h2>
+            <p>Welcome to the official site of Hyperspec AI. Explore our user management dashboard.</p>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboardPage" class="dashboard" style="display: none;">
+            <h2>User Dashboard</h2>
+
+            <!-- Dashboard Icons -->
+            <div class="dashboard-icons">
+                <div class="icon" onclick="showUserList()">
+                    <i class="fas fa-users"></i>
+                    <div class="icon-label">User List</div>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-cogs"></i>
+                    <div class="icon-label">Settings</div>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="icon-label">Analytics</div>
+                </div>
+            </div>
+
+            <!-- User List Section -->
+            <div id="userListSection" style="display:none;">
+                <h3>User List</h3>
+                <input type="text" id="searchInput" placeholder="Search for users..." onkeyup="searchUsers()">
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Users will be dynamically added here -->
+                    </tbody>
+                </table>
+                <h3>User Details</h3>
+                <div id="userDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Hyperspec AI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const users = [
+            { id: "1", name: "Alice", email: "alice@example.com", address: "New York, USA", phone: "123-456-7890" },
+            { id: "2", name: "Bob", email: "bob@example.com", address: "London, UK", phone: "987-654-3210" },
+            { id: "3", name: "Charlie", email: "charlie@example.com", address: "Berlin, Germany", phone: "555-666-7777" }
+        ];
+
+        function showHomePage() {
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('dashboardPage').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('dashboardPage').style.display = 'block';
+        }
+
+        function showUserList() {
+            document.getElementById('userListSection').style.display = 'block';
+            fetchUsers();
+        }
+
+        function fetchUsers() {
+            const tableBody = document.querySelector("#usersTable tbody");
+            tableBody.innerHTML = '';
+            users.forEach(user => {
+                const row = document.createElement("tr");
+                const idCell = document.createElement("td");
+                const idLink = document.createElement("a");
+                idLink.href = "#";
+                idLink.innerText = user.id;
+                idLink.onclick = () => fetchUserDetails(user.id);
+                idCell.appendChild(idLink);
+                const nameCell = document.createElement("td");
+                nameCell.innerText = user.name;
+                row.appendChild(idCell);
+                row.appendChild(nameCell);
+                tableBody.appendChild(row);
+            });
+        }
+
+        function fetchUserDetails(userId) {
+            const user = users.find(u => u.id === userId);
+            document.getElementById("userDetails").innerHTML = `
+                <p><strong>ID:</strong> ${user.id}</p>
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Address:</strong> ${user.address}</p>
+                <p><strong>Phone:</strong> ${user.phone}</p>
+            `;
+        }
+    </script>
+
+</body>
+>>>>>>> 9b7f2c6230047973c04b1b63e8a5bcb2eaae0a18
 </html>
